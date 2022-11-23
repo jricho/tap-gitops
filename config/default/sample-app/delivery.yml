@@ -35,7 +35,7 @@ spec:
         tanzu.app.live.view.application.name: weatherforecast-steeltoe
     spec:
       containers:
-      - image: index.docker.io/jamier/sample-app-default@sha256:aa4bcd37dded8fe30238821e8802d56638c29fbc9438e171c8fd7977cb99f3a8
+      - image: index.docker.io/jamier/sample-app-default@sha256:ecb43c3eed9ac814cd50242e6975c64cedd0948ba3ea6371220601d7dd6b0783
         name: workload
         resources: {}
         securityContext:
