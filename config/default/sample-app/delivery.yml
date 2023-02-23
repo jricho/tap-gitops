@@ -5,6 +5,7 @@ metadata:
   annotations:
     ootb.apps.tanzu.vmware.com/servicebinding-workload: "true"
     ootb.apps.tanzu.vmware.com/apidescriptor-ref: "true"
+    kapp.k14s.io/change-rule: upsert after upserting servicebinding.io/ServiceBindings
   labels:
     app.kubernetes.io/part-of: sample-app
     apps.tanzu.vmware.com/has-tests: "true"
@@ -20,6 +21,8 @@ spec:
       annotations:
         autoscaling.knative.dev/minScale: "1"
         conventions.carto.run/applied-conventions: |-
+          spring-boot-convention/auto-configure-actuators-check
+          spring-boot-convention/app-live-view-appflavour-check
           appliveview-sample/app-live-view-appflavour-check
           appliveview-sample/app-live-view-connector-steeltoe
           appliveview-sample/app-live-view-appflavours-steeltoe
@@ -35,7 +38,7 @@ spec:
         tanzu.app.live.view.application.name: weatherforecast-steeltoe
     spec:
       containers:
-      - image: index.docker.io/jamier/sample-app-default@sha256:6b707d691e94a46ce46612e546c9106f5167a585663f2f269790c1f91cbd4efa
+      - image: index.docker.io/jamier/sample-app-default@sha256:57298cf31fa91b10a61d9795e8d97e6ecfdca03a26e0411b794b011057dc712f
         name: workload
         resources: {}
         securityContext:
