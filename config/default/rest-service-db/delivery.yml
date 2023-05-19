@@ -52,7 +52,7 @@ spec:
       - env:
         - name: JAVA_TOOL_OPTIONS
           value: -Dmanagement.endpoint.health.probes.add-additional-paths="true" -Dmanagement.endpoint.health.show-details="always" -Dmanagement.endpoints.web.base-path="/actuator" -Dmanagement.endpoints.web.exposure.include="*" -Dmanagement.health.probes.enabled="true" -Dmanagement.server.port="8081" -Dserver.port="8080" -Dserver.shutdown.grace-period="24s"
-        image: index.docker.io/jamier/rest-service-db-default@sha256:d89bac88d88e47e3a1835f2f96a117a857f00e94859d1fd1aac1c3a059cfeb29
+        image: index.docker.io/jamier/rest-service-db-default@sha256:e260e039ba85ca47f11b7329f8696b6193bfb6fcfa4c81673864d9227757586d
         livenessProbe:
           httpGet:
             path: /livez
