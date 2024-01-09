@@ -33,6 +33,8 @@ spec:
           spring-boot-convention/app-live-view-connector-boot
           spring-boot-convention/app-live-view-appflavours-boot
         developer.conventions/target-containers: workload
+        kubectl.kubernetes.io/last-applied-configuration: |
+          {"apiVersion":"carto.run/v1alpha1","kind":"Workload","metadata":{"annotations":{},"labels":{"apis.apps.tanzu.vmware.com/register-api":"true","app.kubernetes.io/part-of":"rest-service-db","apps.tanzu.vmware.com/auto-configure-actuators":"true","apps.tanzu.vmware.com/has-tests":"true","apps.tanzu.vmware.com/workload-type":"web"},"name":"rest-service-db","namespace":"default"},"spec":{"build":{"env":[{"name":"BP_JVM_VERSION","value":"11"}]},"params":[{"name":"annotations","value":{"autoscaling.knative.dev/minScale":"1"}},{"name":"api_descriptor","value":{"description":"Tanzu-java-rest-service","location":{"path":"/api-docs"},"owner":"default-team","system":"java-rest","type":"openapi"}}],"serviceClaims":[{"name":"database","ref":{"apiVersion":"services.apps.tanzu.vmware.com/v1alpha1","kind":"ClassClaim","name":"customer-database"}}],"source":{"git":{"ref":{"branch":"main"},"url":"https://github.com/jricho/application-accelerator-samples"},"subPath":"java-rest-service"}}}
       labels:
         apis.apps.tanzu.vmware.com/register-api: "true"
         app.kubernetes.io/component: run
@@ -52,7 +54,7 @@ spec:
       - env:
         - name: JAVA_TOOL_OPTIONS
           value: -Dmanagement.endpoint.health.probes.add-additional-paths="true" -Dmanagement.endpoint.health.show-details="always" -Dmanagement.endpoints.web.base-path="/actuator" -Dmanagement.endpoints.web.exposure.include="*" -Dmanagement.health.probes.enabled="true" -Dmanagement.server.port="8081" -Dserver.port="8080" -Dserver.shutdown.grace-period="24s"
-        image: index.docker.io/jamier/rest-service-db-default@sha256:e260e039ba85ca47f11b7329f8696b6193bfb6fcfa4c81673864d9227757586d
+        image: index.docker.io/jamier/rest-service-db-default@sha256:894ee3d39c570c8476d35fdbcc69cd56d2a7313b5cf936f010aebe6f3e0a0984
         livenessProbe:
           httpGet:
             path: /livez
