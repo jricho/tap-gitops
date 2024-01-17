@@ -17,6 +17,7 @@ spec:
   template:
     metadata:
       annotations:
+        apps.tanzu.vmware.com/correlationid: https://github.com/jricho/application-accelerator-samples?sub_path=tanzu-java-web-app
         autoscaling.knative.dev/minScale: "1"
         boot.spring.io/actuator: http://:8081/actuator
         boot.spring.io/version: 2.7.10
@@ -50,7 +51,7 @@ spec:
       - env:
         - name: JAVA_TOOL_OPTIONS
           value: -Dmanagement.endpoint.health.probes.add-additional-paths="true" -Dmanagement.endpoint.health.show-details="always" -Dmanagement.endpoints.web.base-path="/actuator" -Dmanagement.endpoints.web.exposure.include="*" -Dmanagement.health.probes.enabled="true" -Dmanagement.server.port="8081" -Dserver.port="8080" -Dserver.shutdown.grace-period="24s"
-        image: index.docker.io/jamier/tanzu-java-web-app-default@sha256:0e717cef48cf33b2cf9d0db95b2fd3e7c199a57513eaa755499a0e189c7923ef
+        image: index.docker.io/jamier/tanzu-java-web-app-default@sha256:456a178f9485df4de231fd80a1312f15dbe65ea45f36b5bd53ca3aa8295bf05f
         livenessProbe:
           httpGet:
             path: /livez
@@ -67,6 +68,18 @@ spec:
             scheme: HTTP
         resources: {}
         securityContext:
+          allowPrivilegeEscalation: false
+          capabilities:
+            drop:
+            - ALL
+          runAsNonRoot: true
           runAsUser: 1000
+          seccompProfile:
+            type: RuntimeDefault
+        startupProbe:
+          httpGet:
+            path: /readyz
+            port: 8080
+            scheme: HTTP
       serviceAccountName: default
 
