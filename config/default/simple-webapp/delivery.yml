@@ -21,8 +21,8 @@ spec:
         autoscaling.knative.dev/minScale: "1"
         boot.spring.io/version: 3.1.0
         conventions.carto.run/applied-conventions: |-
-          appliveview-sample/app-live-view-appflavour-check
           spring-boot-convention/auto-configure-actuators-check
+          spring-boot-convention/is-native-app-check
           spring-boot-convention/spring-boot
           spring-boot-convention/spring-boot-graceful-shutdown
           spring-boot-convention/spring-boot-web
