@@ -22,8 +22,8 @@ spec:
         boot.spring.io/actuator: http://:8081/actuator
         boot.spring.io/version: 2.7.10
         conventions.carto.run/applied-conventions: |-
-          appliveview-sample/app-live-view-appflavour-check
           spring-boot-convention/auto-configure-actuators-check
+          spring-boot-convention/is-native-app-check
           spring-boot-convention/spring-boot
           spring-boot-convention/spring-boot-graceful-shutdown
           spring-boot-convention/spring-boot-web
@@ -51,7 +51,7 @@ spec:
       - env:
         - name: JAVA_TOOL_OPTIONS
           value: -Dmanagement.endpoint.health.probes.add-additional-paths="true" -Dmanagement.endpoint.health.show-details="always" -Dmanagement.endpoints.web.base-path="/actuator" -Dmanagement.endpoints.web.exposure.include="*" -Dmanagement.health.probes.enabled="true" -Dmanagement.server.port="8081" -Dserver.port="8080" -Dserver.shutdown.grace-period="24s"
-        image: index.docker.io/jamier/tanzu-java-web-app-default@sha256:456a178f9485df4de231fd80a1312f15dbe65ea45f36b5bd53ca3aa8295bf05f
+        image: index.docker.io/jamier/tanzu-java-web-app-default@sha256:b7cade8f6e13e057da2fb2804ce48f2b0ebd3f823ba0a328078236da46071043
         livenessProbe:
           httpGet:
             path: /livez
