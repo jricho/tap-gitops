@@ -54,7 +54,7 @@ spec:
       - env:
         - name: JAVA_TOOL_OPTIONS
           value: -Dmanagement.endpoint.health.probes.add-additional-paths="true" -Dmanagement.endpoint.health.show-details="always" -Dmanagement.endpoints.web.base-path="/actuator" -Dmanagement.endpoints.web.exposure.include="*" -Dmanagement.health.probes.enabled="true" -Dmanagement.server.port="8081" -Dserver.port="8080" -Dserver.shutdown.grace-period="24s"
-        image: index.docker.io/jamier/tanzu-java-web-app-default@sha256:6e02aff0d3359d9853044e59313860160424f5a2d85a9417af52fbd069bc3106
+        image: index.docker.io/jamier/tanzu-java-web-app-default@sha256:6c38f15e86c88df07e5ec6ed6b6affd8e85704a9dda4763312a708f507385797
         livenessProbe:
           httpGet:
             path: /livez
